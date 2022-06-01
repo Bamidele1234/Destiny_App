@@ -1,6 +1,9 @@
 //import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'story_brain.dart';
+
+var storyBrain = StoryBrain();
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: Destiny(),
+      home: const Destiny(),
     );
   }
 }
@@ -41,15 +44,15 @@ class _DestinyState extends State<Destiny> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 6,
                 child: Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Center(
                     child: Text(
-                      'The story goes here',
+                      storyBrain.getStory(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 25.0,
                       ),
                     ),
@@ -63,14 +66,20 @@ class _DestinyState extends State<Destiny> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.red),
                     ),
-                    child: const Text(
-                      'An  option',
-                      style: TextStyle(
+                    child: Text(
+                      storyBrain.getChoice1(),
+                      style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(
+                        () {
+                          storyBrain.nextStory(1);
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
@@ -81,14 +90,20 @@ class _DestinyState extends State<Destiny> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
                     ),
-                    child: const Text(
-                      'Another option',
-                      style: TextStyle(
+                    child: Text(
+                      storyBrain.getChoice2(),
+                      style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(
+                        () {
+                          storyBrain.nextStory(2);
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
