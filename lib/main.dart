@@ -1,4 +1,4 @@
-import 'dart:ui';
+//import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -28,43 +28,72 @@ class _DestinyState extends State<Destiny> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Expanded(
-              flex: 12,
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(
-                    'The story goes here',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25.0,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+        constraints: const BoxConstraints.expand(),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Expanded(
+                flex: 6,
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Text(
+                      'The story goes here',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25.0,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  ),
-                  child: const Text(
-                    'An  option',
-                    style: TextStyle(
-                      fontSize: 20.0,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.red),
                     ),
+                    child: const Text(
+                      'An  option',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    ),
+                    child: const Text(
+                      'Another option',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
