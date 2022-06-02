@@ -45,7 +45,7 @@ class _DestinyState extends State<Destiny> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                flex: 6,
+                flex: 11,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Center(
@@ -60,6 +60,7 @@ class _DestinyState extends State<Destiny> {
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: TextButton(
@@ -84,26 +85,30 @@ class _DestinyState extends State<Destiny> {
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
-                    ),
-                    child: Text(
-                      storyBrain.getChoice2(),
-                      style: const TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
+                  child: Visibility(
+                    visible: storyBrain.visibility(),
+                    child: TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blue),
                       ),
+                      child: Text(
+                        storyBrain.getChoice2(),
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            storyBrain.nextStory(2);
+                          },
+                        );
+                      },
                     ),
-                    onPressed: () {
-                      setState(
-                        () {
-                          storyBrain.nextStory(2);
-                        },
-                      );
-                    },
                   ),
                 ),
               ),

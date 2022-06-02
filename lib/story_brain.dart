@@ -2,6 +2,7 @@ import 'story.dart';
 
 class StoryBrain {
   int _storyNum = 0;
+  bool _isVisible = true;
 
   /// Encapsulate the story data
   final List<Story> _storyData = [
@@ -46,28 +47,43 @@ class StoryBrain {
   void nextStory(int val) => {
         if (_storyNum == 0)
           {
-            if (val == 1) {_storyNum = 2} else if (val == 2) {_storyNum = 1}
+            if (val == 1)
+              {_storyNum = 2, _isVisible = true}
+            else if (val == 2)
+              {_storyNum = 1, _isVisible = true}
           }
         else if (_storyNum == 1)
           {
-            if (val == 1) {_storyNum = 2} else if (val == 2) {_storyNum = 3}
+            if (val == 1)
+              {_storyNum = 2, _isVisible = true}
+            else if (val == 2)
+              {_storyNum = 3, _isVisible = false}
           }
         else if (_storyNum == 2)
           {
-            if (val == 1) {_storyNum = 5} else if (val == 2) {_storyNum = 4}
+            if (val == 1)
+              {_storyNum = 5, _isVisible = false}
+            else if (val == 2)
+              {_storyNum = 4, _isVisible = false}
           }
         else if (_storyNum == 3)
           {
-            if (val == 1) {restart()} else if (val == 2) {}
+            if (val == 1) {restart()} else if (val == 2) {},
+            _isVisible = true
           }
         else if (_storyNum == 4)
           {
-            if (val == 1) {restart()} else if (val == 2) {}
+            if (val == 1) {restart()} else if (val == 2) {},
+            _isVisible = true
           }
         else if (_storyNum == 5)
           {
-            if (val == 1) {restart()} else if (val == 2) {}
+            if (val == 1) {restart()} else if (val == 2) {},
+            _isVisible = true
           }
       };
   void restart() => _storyNum = 0;
+
+  // Return the visibility property
+  bool visibility() => _isVisible;
 }
